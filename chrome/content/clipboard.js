@@ -10,5 +10,24 @@ var sttf_clipboard = {
    clipboardCopy(currentURL.substring(0, hashLoc) + appendToURL);
   else
    clipboardCopy(currentURL + appendToURL);
+ },
+ showMenu: function()
+ {
+  let selStr = '';
+  if ((typeof gContextMenu === 'object') && gContextMenu.searchSelected)
+   selStr = gContextMenu.searchSelected;
+  else if (typeof getBrowserSelection === 'function')
+   selStr = getBrowserSelection();
+  else if (typeof window._content !== 'undefined' || window._content === null)
+   selStr = window._content.getSelection();
+  else
+  {
+   let thisselection = document.commandDispatcher.focusedWindow.getSelection();
+   selStr = thisselection.toString();
+  }
+  if (selStr.length > 0)
+   document.getElementById('context-sttf').hidden = false;
+  else
+   document.getElementById('context-sttf').hidden = true;
  }
 }

@@ -4,7 +4,7 @@ var sttf_grabber = {
   window.removeEventListener('load', sttf_grabber.LoadListener, false);
   gBrowser.addTabsProgressListener(sttf_grabber.ProgressListener, Components.interfaces.nsIWebProgress.NOTIFY_PROGRESS);
   let observerService = Components.classes['@mozilla.org/observer-service;1'].getService(Components.interfaces.nsIObserverService);
-
+  document.getElementById('contentAreaContextMenu').addEventListener('popupshowing', sttf_clipboard.showMenu, false);
  },
  ProgressListener:
  {
