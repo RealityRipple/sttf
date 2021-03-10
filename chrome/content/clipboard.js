@@ -13,6 +13,12 @@ var sttf_clipboard = {
  },
  showMenu: function()
  {
+  let pfs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefService).getBranch('extensions.sttf.');
+  if (pfs.getBoolPref('addcontextmenuitem') === false)
+  {
+   document.getElementById('context-sttf').hidden = true;
+   return;
+  }
   let selStr = '';
   if ((typeof gContextMenu === 'object') && gContextMenu.searchSelected)
    selStr = gContextMenu.searchSelected;

@@ -26,6 +26,8 @@
   <em:updateURL>https://realityripple.com/Software/Mozilla-Extensions/sttf/update.rdf</em:updateURL>
   <em:iconURL>chrome://sttf/skin/logo.png</em:iconURL>
   <em:iconURL64>chrome://sttf/skin/logo64.png</em:iconURL64>
+  <em:optionsURL>chrome://sttf/content/prefs.xul</em:optionsURL>
+  <em:optionsType>2</em:optionsType>
   <em:creator>RealityRipple</em:creator>
   <em:contributor>Job Bautista</em:contributor>
  </Description>
