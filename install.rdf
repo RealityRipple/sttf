@@ -3,7 +3,7 @@
  <Description about="urn:mozilla:install-manifest">
   <em:name>sttf</em:name>
   <em:id>{6B0DFFCC-16AA-5CF7-B6DC-DE502F7E7FD0}</em:id>
-  <em:version>1.2</em:version>
+  <em:version>1.2.1</em:version>
   <em:type>2</em:type>
   <!-- Firefox -->
   <em:targetApplication>
