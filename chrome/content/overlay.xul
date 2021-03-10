@@ -4,6 +4,6 @@
  <script src="chrome://sttf/content/detector.js" />
  <script src="chrome://sttf/content/clipboard.js" />
  <popup id="contentAreaContextMenu">
-  <menuitem id="context-sttf" oncommand="copySelectedTextURL();" label="&sttf.menuitem.label;" insertafter="context-copy" />
+  <menuitem id="context-sttf" oncommand="sttf_clipboard.copySelectedTextURL();" label="&sttf.menuitem.label;" insertafter="context-copy" />
  </popup>
 </overlay>
