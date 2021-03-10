@@ -27,5 +27,6 @@
   <em:iconURL>chrome://sttf/skin/logo.png</em:iconURL>
   <em:iconURL64>chrome://sttf/skin/logo64.png</em:iconURL64>
   <em:creator>RealityRipple</em:creator>
+  <em:contributor>Job Bautista</em:contributor>
  </Description>
 </RDF>
