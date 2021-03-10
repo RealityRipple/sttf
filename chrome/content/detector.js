@@ -34,7 +34,7 @@ var sttf_grabber = {
     if(aRequest.name === 'about:blank')
      return;
    }
-   let hash = decodeURI(aURI.ref);
+   let hash = aURI.ref;
    let match = /:~:text=(?:([^-]+)-,)?([^,]+)(?:,([^,]+))?(?:,-(.+))?/;
    let found = hash.match(match);
    if(found === null)
@@ -48,10 +48,10 @@ var sttf_grabber = {
     this.fData[aRequest.name] = found;
     return;
    }
-   // let prefix = found[1];
-   let start = found[2];
-   // let finish = found[3];
-   // let suffix = found[4];
+   // let prefix = decodeURIComponent(found[1]);
+   let start = decodeURIComponent(found[2]);
+   // let finish = decodeURIComponent(found[3]);
+   // let suffix = decodeURIComponent(found[4]);
    aBrowser._fastFind.find(start, false, 0, false);
   },
   onStateChange: function(aBrowser, aProgress, aRequest, aStateFlags, aStatus)
@@ -76,10 +76,10 @@ var sttf_grabber = {
     return;
    let found = this.fData[aRequest.name];
    delete this.fData[aRequest.name];
-   // let prefix = found[1];
-   let start = found[2];
-   // let finish = found[3];
-   // let suffix = found[4];
+   // let prefix = decodeURIComponent(found[1]);
+   let start = decodeURIComponent(found[2]);
+   // let finish = decodeURIComponent(found[3]);
+   // let suffix = decodeURIComponent(found[4]);
    aBrowser._fastFind.find(start, false, 0, false);
   },
   onProgressChange: function() {},
