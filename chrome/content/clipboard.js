@@ -1,9 +1,12 @@
 function copySelectedTextURL() {
- var currentURL = gBrowser.contentWindow.location.href;
+ var cWindow = gBrowser.contentWindow
+ var currentURL = cWindow.location.href;
  var hashLoc = currentURL.indexOf("#");
+ var clipboardCopy = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper).copyString
+ var appendToURL = "#:~:text=" + cWindow.getSelection().toString()
  if (hashLoc > 0) {
-  Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper).copyString(currentURL.substring(0, hashLoc) + "#:~:text=" + gBrowser.contentWindow.getSelection().toString());
+  clipboardCopy(currentURL.substring(0, hashLoc) + appendToURL);
  } else {
-  Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper).copyString(currentURL + "#:~:text=" + gBrowser.contentWindow.getSelection().toString());
+  clipboardCopy(currentURL + appendToURL);
  }
 }
