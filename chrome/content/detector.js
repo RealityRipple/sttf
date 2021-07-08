@@ -23,16 +23,21 @@ var sttf_grabber = {
     return;
    if(aURI.ref === null || aURI.ref === '')
     return;
+   let reqName = null;
    if(aRequest !== null)
    {
-    if(typeof aRequest.name === 'undefined')
-     return
-    if(aRequest.name === null)
-     return;
-    if(aRequest.name === '')
-     return;
-    if(aRequest.name === 'about:blank')
-     return;
+    try
+    {
+     reqName = aRequest.name;
+    }
+    catch (ex)
+    {
+     reqName = null;
+    }
+    if(reqName === '')
+     reqName = null;
+    if(reqName === 'about:blank')
+     reqName = null;
    }
    let hash = aURI.ref;
    let match = /:~:text=(?:([^-]+)-,)?([^,]+)(?:,([^,]+))?(?:,-(.+))?/;
@@ -43,9 +48,9 @@ var sttf_grabber = {
     return;
    if(typeof found[2] === 'undefined')
     return;
-   if(aRequest !== null)
+   if(reqName !== null)
    {
-    this.fData[aRequest.name] = found;
+    this.fData[reqName] = found;
     return;
    }
    // let prefix = decodeURIComponent(found[1]);
@@ -64,18 +69,25 @@ var sttf_grabber = {
     return
    if(aRequest === null)
     return;
-   if(typeof aRequest.name === 'undefined')
-    return
-   if(aRequest.name === null)
+   let reqName = null;
+   try
+   {
+    reqName = aRequest.name;
+   }
+   catch (ex)
+   {
+    reqName = null;
+   }
+   if(reqName === '')
+    reqName = null;
+   if(reqName === 'about:blank')
+    reqName = null;
+   if (reqName === null)
     return;
-   if(aRequest.name === '')
+   if (!this.fData.hasOwnProperty(reqName))
     return;
-   if(aRequest.name === 'about:blank')
-    return;
-   if (!this.fData.hasOwnProperty(aRequest.name))
-    return;
-   let found = this.fData[aRequest.name];
-   delete this.fData[aRequest.name];
+   let found = this.fData[reqName];
+   delete this.fData[reqName];
    // let prefix = decodeURIComponent(found[1]);
    let start = decodeURIComponent(found[2]);
    // let finish = decodeURIComponent(found[3]);
